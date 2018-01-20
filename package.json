@@ -1,0 +1,15 @@
+{
+  "name": "discordbotdog",
+  "version": "1.0.0",
+  "description": "GoodBoi",
+  "main": "bot.js",
+  "scripts": {
+    "start":"node bot.js"
+  },
+  "author": "LeYohen ",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "discord.js-commando": "^0.9.0"
+  }
+}
