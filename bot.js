@@ -1,11 +1,12 @@
 // JavaScript source code
 const Discord = require('discord.js');
 const bot  = new Discord.Client();
+const ytdl = require('ytdl-core');
 let  prefix = "??";
 
 
 
-bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début 
+bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début BOT
 	
 	//see msgs
 	console.log(message.author.username+" : "+message.content);
@@ -61,10 +62,71 @@ bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	 message.channel.send('**' + message.author.username +'** *fait un câlin à* **'+message.mentions.users.first().username+'** :heart:(no homo only bromance) \n' +imageHug);
 							}
 		
-	}); //fin ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+		
+	//<--------------------------------------------------- ANGERY DOG START ---------------------------------------------------------------->						
+	if(message.content.startsWith('pti con'+' <@399986788753735690>')){
+	var auteur=message.author.username;
+	var imageauteur=message.author.displayAvatarURL;
+	const embed = {
+		"title": "**GoodBoi wants to tell you something** :",
+		"url": "https://www.youtube.com/watch?v=o1NBB8EMduo",
+		"color": 5301186,
+		"footer": {},
+		"thumbnail": {
+		"url": "https://cdn.discordapp.com/avatars/399986788753735690/c7cd90eb9a9da6044cee2d430e12bcd7.png"
+					},
+			"image": {
+			"url": "https://i.imgur.com/4zqGnAP.jpg?width=400&height=400"
+		},
+		"author": {
+			"name": auteur,
+			"url": "https://discordapp.com",
+			"icon_url": imageauteur
+		},
+		"fields": [
+			{
+		"name": "😱",
+		"value": "ME IS ANGERY NOW!"
+		},
+		{
+		"name": ":anger:",
+		"value": "woof",
+		"inline": true
+		},
+		{
+		"name": ":hotsprings:",
+		"value": "rrrw",
+		"inline": true
+		}
+				]
+			};
+			message.channel.send({ embed });
+	}
+	//<--------------------------------------------------- ANGERY DOG END ---------------------------------------------------------------->	
+	/*if (message.content === '??play_test') {
+        if (message.channel.type !== 'text') return;
+
+        const { voiceChannel } = message.member;
+
+        if (!voiceChannel) {
+            return message.reply('please join a voice channel first!');
+        }
+
+        voiceChannel.join().then(connection => {
+            const stream = ytdl('https://www.youtube.com/watch?v=AiIBKcd4m5Q', { filter: 'audioonly' });
+            consst dispatcher = connection.playStream(stream);
+
+            dispatcher.on('end', () => voiceChannel.leave());
+        });
+    process.on('unhandledRejection', error => console.error(`Uncaught Promise Rejection:\n${error}`));
+	}*/
+
+	
+}); //fin BOT ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-bot.login(process.env.BOT_TOKEN);
+bot.login('process.env.BOT_TOKEN');
 
 //<----------------------------------------- BANQUE D'IMAGE (en attendant d'utiliser le file.dr de node.js ----------------------------------------->
 var imageurl = new Array('https://i.imgur.com/kVLWTgy.jpg','https://i.imgur.com/W1PKAlu.jpg','https://i.imgur.com/DUvgdhr.jpg','https://i.imgur.com/L1oQhJU.png','https://i.imgur.com/o7rgMYY.png','https://i.imgur.com/tGaNmRB.jpg','https://i.imgur.com/MdcDpeZ.jpg','https://i.imgur.com/7z3dS5i.png','https://i.imgur.com/bfHeLH4.jpg','https://i.imgur.com/JIfsXR9.png','https://i.imgur.com/poM8Dhw.jpg','https://i.imgur.com/VKoaUwj.jpg','https://i.imgur.com/bY7ORrX.jpg','https://i.imgur.com/aQgoCfP.jpg','https://i.imgur.com/lWE2ZW0.jpg','https://i.imgur.com/hroKIcX.jpg','https://i.imgur.com/dpEXNbr.jpg','https://i.imgur.com/OVNLWpQ.jpg','https://i.imgur.com/yRCkRz4.jpg','https://i.imgur.com/iyITZLU.jpg','https://i.imgur.com/XjrwIF0.jpg','https://i.imgur.com/vUv9vrj.png','https://i.imgur.com/nzSAqDh.png','https://i.imgur.com/nHfrURC.jpg','https://i.imgur.com/q1MZa9H.jpg','https://i.imgur.com/pBgLa8q.jpg','https://i.imgur.com/ONBCmWV.png','https://i.imgur.com/nd1AwPm.jpg','https://i.imgur.com/3Likenl.jpg','https://i.imgur.com/b2wyJNH.png','https://i.imgur.com/ik1KTLZ.png','https://i.imgur.com/SulZnOp.jpg','https://i.imgur.com/4oBoujQ.png','https://i.imgur.com/EXDUlLZ.png','https://i.imgur.com/BvAw2U3.png','https://i.imgur.com/yOcd1bU.jpg','https://i.imgur.com/8QP41CO.png','https://i.imgur.com/Dm0WW9l.png','https://i.imgur.com/PGSdXTr.jpg','https://i.imgur.com/jjZas0f.png');
