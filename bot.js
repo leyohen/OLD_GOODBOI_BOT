@@ -1,7 +1,6 @@
 // JavaScript source code
 const Discord = require('discord.js');
 const bot  = new Discord.Client();
-const ytdl = require('ytdl-core');
 let  prefix = "??";
 
 
@@ -104,24 +103,7 @@ bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			message.channel.send({ embed });
 	}
 	//<--------------------------------------------------- ANGERY DOG END ---------------------------------------------------------------->	
-	/*if (message.content === '??play_test') {
-        if (message.channel.type !== 'text') return;
-
-        const { voiceChannel } = message.member;
-
-        if (!voiceChannel) {
-            return message.reply('please join a voice channel first!');
-        }
-
-        voiceChannel.join().then(connection => {
-            const stream = ytdl('https://www.youtube.com/watch?v=AiIBKcd4m5Q', { filter: 'audioonly' });
-            consst dispatcher = connection.playStream(stream);
-
-            dispatcher.on('end', () => voiceChannel.leave());
-        });
-    process.on('unhandledRejection', error => console.error(`Uncaught Promise Rejection:\n${error}`));
-	}*/
-
+	
 	
 }); //fin BOT ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
