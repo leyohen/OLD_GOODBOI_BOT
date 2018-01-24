@@ -3,13 +3,38 @@ const Discord = require('discord.js');
 const bot  = new Discord.Client();
 let  prefix = "??";
 
-
-
-bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début BOT
+bot.on('ready',()=> {	
+bot.user.setStatus('idle');
+	console.log('bot connecté');
+	 bot.user.setGame('With dog toys');});
 	
-	//see msgs
+
+
+bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début BOT
+
+	//console -log
 	console.log(message.author.username+" : "+message.content);
+	//Global announcement for updates
+	if(message.author.id=='139039555180429312' && message.content=='??updateSTART'){
+			bot.user.setGame('UPDATE SOON');
+			bot.user.setStatus('idle');}
+	if(message.author.id=='139039555180429312' && message.content=='??updateEND'){
+			bot.user.setGame('With dog toys');
+			bot.user.setStatus('online');}
 	
+		//<----------------------------------------------------------console---------------------------------------------------------------------->
+	if(message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960'){
+	const channelz = bot.channels.get("405792135233798186","376472607714836490"); 
+	var maDate = new Date() ;
+	var h = maDate.getHours();
+	var s = maDate.getSeconds();
+	var min = maDate.getMinutes();
+	channelz.send("``"+message.author.username+" : "+message.content+" ("+h+':'+min+':'+s+")"+"``");
+	}
+	//<-------------------------------------------------Fin console--------------------------------------------------------------------------->
+	//<------------------------------------------------------------COMMANDS----------------------------------------------------------------->
+	if(message.author.id=='139039555180429312' && message.content == 'pd' ){
+	message.channel.send('dolaris t pd');}
 	
 	if(message.content == 'ping'){ //test ping pong
 		message.reply('pong');
@@ -20,15 +45,16 @@ bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 								 }
 
 	if(message.content == 'date'){ //date du pc du bot
-		var maDate = new Date() ;
-		var h = maDate.getHours();
-		var s = maDate.getSeconds();
-		var min = maDate.getMinutes();
+	var maDate = new Date() ;
+	var h = maDate.getHours();
+	var s = maDate.getSeconds();
+	var min = maDate.getMinutes();
 		message.reply('il est '+h+':'+min+':'+s);
+	
 								 }
 								 
 	if(message.content.startsWith(prefix + "help")) { //liste des commandes
-		 message.channel.send("```List of commands : \n\n ??version  | Version  \n ??help | Toutes les commandes \n ??dog |partage une image d'un chien  ??Avatar |Partage l'avatar d'un membre du Discord  ```");	
+		 message.channel.send("```List of commands : \n\n ??version  | Version 1.1.8  \n ??help | Toutes les commandes \n ??dog | partage une image d'un chien \n ??Avatar @Pseudo | Partage l'avatar d'un membre du Discord \n ??hug @Pseudo | Câlin à quelqu'un \n + a few hidden commands!  ```");	
 	                                                  }
 													  
 	if(message.content.startsWith('slt')){
@@ -103,8 +129,7 @@ bot.on('message',(message)=> { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			message.channel.send({ embed });
 	}
 	//<--------------------------------------------------- ANGERY DOG END ---------------------------------------------------------------->	
-	
-	
+		
 }); //fin BOT ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
