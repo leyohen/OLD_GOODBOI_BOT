@@ -29,7 +29,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	var h = maDate.getHours();
 	var s = maDate.getSeconds();
 	var min = maDate.getMinutes();
-	channelz.send("``"+message.author.username+" : "+message.content+" ("+h+':'+min+':'+s+")"+"``");
+	channelz.send('```'+'('+h+':'+min+':'+s+')'+message.author.username+" : "+message.content+"    [in "+message.channel.name+"]```");
 	}
 	//<-------------------------------------------------Fin console--------------------------------------------------------------------------->
 	//<------------------------------------------------------------COMMANDS----------------------------------------------------------------->
