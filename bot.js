@@ -1,7 +1,10 @@
 // JavaScript source code
 const Discord = require('discord.js');
 const bot  = new Discord.Client();
+var playCommand = "??play";
 let  prefix = "??";
+const ytdl = require('ytdl-core');
+var servers = {} ;
 
 bot.on('ready',()=> {	
 bot.user.setStatus('idle');
@@ -11,7 +14,7 @@ bot.user.setStatus('idle');
 
 
 bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début BOT
-
+	
 	//console -log
 	console.log(message.author.username+" : "+message.content);
 	//Global announcement for updates
@@ -21,6 +24,31 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	if(message.author.id=='139039555180429312' && message.content=='??updateEND'){
 			bot.user.setGame('With dog toys');
 			bot.user.setStatus('online');}
+	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 if (message.content.startsWith('??join') && message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960') { //message.author.id=='139039555180429312'| message.author.id=='241246422723330048' ) {
+		if (message.member.voiceChannel){
+		var musik = message.content;
+		var MusiquePlay = musik.slice(7);
+		console.log(MusiquePlay+" HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	//	const streamOptions = { seek: 0, volume: 1 };
+		var voiceChannel = message.member.voiceChannel;
+				voiceChannel.join().then(connection => {
+		const dispatcher = connection.playStream(ytdl(MusiquePlay)); 
+		dispatcher.on("end", end => {
+                console.log("left channel");
+                voiceChannel.leave();
+            });	
+        }).catch(err => console.log(err));
+	 }
+	else{
+			if(!message.member.voiceChannel && message.content ==='??join'){message.reply('TU doit être dans un channel vocal');}
+		}	
+	}
+ 
+  //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	if(message.content === '??leave') {
+	if (message.member.voiceChannel) {
+	message.member.voiceChannel.leave() }};	
 	
 		//<----------------------------------------------------------console---------------------------------------------------------------------->
 	if(message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960'){
@@ -77,7 +105,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		
 		
 	if(message.content.startsWith(prefix + "dog")) { //génère un nombre random
-		var numberimage=Math.floor(Math.random() * Math.floor(40));
+		var numberimage=Math.floor(Math.random() * Math.floor(54));
 		message.reply(imageurl[numberimage])
 		}
 		
@@ -129,6 +157,10 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			message.channel.send({ embed });
 	}
 	//<--------------------------------------------------- ANGERY DOG END ---------------------------------------------------------------->	
+	
+
+	
+	
 		
 }); //fin BOT ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -136,7 +168,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 bot.login(process.env.BOT_TOKEN);
 
 //<----------------------------------------- BANQUE D'IMAGE (en attendant d'utiliser le file.dr de node.js ----------------------------------------->
-var imageurl = new Array('https://i.imgur.com/kVLWTgy.jpg','https://i.imgur.com/W1PKAlu.jpg','https://i.imgur.com/DUvgdhr.jpg','https://i.imgur.com/L1oQhJU.png','https://i.imgur.com/o7rgMYY.png','https://i.imgur.com/tGaNmRB.jpg','https://i.imgur.com/MdcDpeZ.jpg','https://i.imgur.com/7z3dS5i.png','https://i.imgur.com/bfHeLH4.jpg','https://i.imgur.com/JIfsXR9.png','https://i.imgur.com/poM8Dhw.jpg','https://i.imgur.com/VKoaUwj.jpg','https://i.imgur.com/bY7ORrX.jpg','https://i.imgur.com/aQgoCfP.jpg','https://i.imgur.com/lWE2ZW0.jpg','https://i.imgur.com/hroKIcX.jpg','https://i.imgur.com/dpEXNbr.jpg','https://i.imgur.com/OVNLWpQ.jpg','https://i.imgur.com/yRCkRz4.jpg','https://i.imgur.com/iyITZLU.jpg','https://i.imgur.com/XjrwIF0.jpg','https://i.imgur.com/vUv9vrj.png','https://i.imgur.com/nzSAqDh.png','https://i.imgur.com/nHfrURC.jpg','https://i.imgur.com/q1MZa9H.jpg','https://i.imgur.com/pBgLa8q.jpg','https://i.imgur.com/ONBCmWV.png','https://i.imgur.com/nd1AwPm.jpg','https://i.imgur.com/3Likenl.jpg','https://i.imgur.com/b2wyJNH.png','https://i.imgur.com/ik1KTLZ.png','https://i.imgur.com/SulZnOp.jpg','https://i.imgur.com/4oBoujQ.png','https://i.imgur.com/EXDUlLZ.png','https://i.imgur.com/BvAw2U3.png','https://i.imgur.com/yOcd1bU.jpg','https://i.imgur.com/8QP41CO.png','https://i.imgur.com/Dm0WW9l.png','https://i.imgur.com/PGSdXTr.jpg','https://i.imgur.com/jjZas0f.png');
+var imageurl = new Array('https://i.imgur.com/kVLWTgy.jpg','https://i.imgur.com/W1PKAlu.jpg','https://i.imgur.com/DUvgdhr.jpg','https://i.imgur.com/L1oQhJU.png','https://i.imgur.com/o7rgMYY.png','https://i.imgur.com/tGaNmRB.jpg','https://i.imgur.com/MdcDpeZ.jpg','https://i.imgur.com/7z3dS5i.png','https://i.imgur.com/bfHeLH4.jpg','https://i.imgur.com/JIfsXR9.png','https://i.imgur.com/poM8Dhw.jpg','https://i.imgur.com/VKoaUwj.jpg','https://i.imgur.com/bY7ORrX.jpg','https://i.imgur.com/aQgoCfP.jpg','https://i.imgur.com/lWE2ZW0.jpg','https://i.imgur.com/hroKIcX.jpg','https://i.imgur.com/dpEXNbr.jpg','https://i.imgur.com/OVNLWpQ.jpg','https://i.imgur.com/yRCkRz4.jpg','https://i.imgur.com/iyITZLU.jpg','https://i.imgur.com/XjrwIF0.jpg','https://i.imgur.com/vUv9vrj.png','https://i.imgur.com/nzSAqDh.png','https://i.imgur.com/nHfrURC.jpg','https://i.imgur.com/q1MZa9H.jpg','https://i.imgur.com/pBgLa8q.jpg','https://i.imgur.com/ONBCmWV.png','https://i.imgur.com/nd1AwPm.jpg','https://i.imgur.com/3Likenl.jpg','https://i.imgur.com/b2wyJNH.png','https://i.imgur.com/ik1KTLZ.png','https://i.imgur.com/SulZnOp.jpg','https://i.imgur.com/4oBoujQ.png','https://i.imgur.com/EXDUlLZ.png','https://i.imgur.com/BvAw2U3.png','https://i.imgur.com/yOcd1bU.jpg','https://i.imgur.com/8QP41CO.png','https://i.imgur.com/Dm0WW9l.png','https://i.imgur.com/PGSdXTr.jpg','https://i.imgur.com/jjZas0f.png','https://i.imgur.com/dj6e0tQ.jpg','https://i.imgur.com/c13Lrvo.jpg','https://i.imgur.com/LjiYms7.jpg','https://i.imgur.com/0NaWjdi.jpg','https://i.imgur.com/3EMhtZm.jpg','https://i.imgur.com/iEG1SoE.jpg','https://i.imgur.com/eAKypGS.jpg','https://i.imgur.com/erZZwSB.jpg','https://i.imgur.com/UGyWuvb.jpg','https://i.imgur.com/cJIdeWa.jpg','https://i.imgur.com/rENtMLz.jpg','https://i.imgur.com/rENtMLz.jpg','https://i.imgur.com/vOYTuGO.jpg','https://i.imgur.com/r3931Gn.jpg','https://i.imgur.com/8AfsTfd.jpg','https://i.imgur.com/VZf2CSl.jpg','https://i.imgur.com/Utxzn1j.jpg','https://i.imgur.com/T98URFz.jpg','https://i.imgur.com/RdfWTIW.jpg','https://i.imgur.com/cBex5zo.jpg','https://i.imgur.com/UR2qJsC.png','https://i.imgur.com/iva8jMF.jpg','https://i.imgur.com/yPEb08M.jpg','https://i.imgur.com/L8SQGIB.jpg');
 //<-------------------------------------  BANQUE D'IMAGE HUG --------------------------------------------------------------------------------------->
 var rn = numberimage=Math.floor(Math.random() * Math.floor(9));
 const hug = ["https://s-media-cache-ak0.pinimg.com/originals/49/a2/1e/49a21e182fcdfb3e96cc9d9421f8ee3f.gif", "https://s-media-cache-ak0.pinimg.com/originals/16/46/f7/1646f720af76ea58853ef231028bafb1.gif", "https://media.giphy.com/media/xJlOdEYy0r7ZS/giphy.gif", "http://i.imgur.com/2WywS3T.gif", "http://i.imgur.com/8ruodNJ.gif", "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1461071296-7451c05f5aae134e2cceb276b085a871.gif", "http://i0.kym-cdn.com/photos/images/original/000/931/030/394.gif", "https://media.tenor.co/images/1171c186f9130d1efa4a186ad4371e8c/tenor.gif", "http://cdn.smosh.com/sites/default/files/ftpuploads/bloguploads/0413/epic-hugs-friends-pikachu.gif"]
