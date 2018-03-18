@@ -4,7 +4,11 @@ const bot  = new Discord.Client();
 var playCommand = "??play";
 let  prefix = "??";
 const ytdl = require('ytdl-core');
-var servers = {} ;
+var google = require('googleapis');
+const Fortnite = require('fortnite');
+const client = new Fortnite(process.env.FT_KEY);
+
+
 
 bot.on('ready',()=> {	
 bot.user.setStatus('idle');
@@ -12,6 +16,8 @@ bot.user.setStatus('idle');
 	 bot.user.setGame('With dog toys');});
 	
 
+	
+	
 
 bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Début BOT
 	
@@ -25,6 +31,19 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			bot.user.setGame('With dog toys');
 			bot.user.setStatus('online');}
 	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	if(message.content.startsWith('??fortnite') && message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960'){
+		var pseudoRAW = message.content;
+		var pseudoUSABLE = pseudoRAW.slice(11);
+		//console.log(pseudoUSABLE+"NAME");
+	client.getInfo(pseudoUSABLE, 'pc').then(data =>message.channel.send("```css"+"\r\n"+"Voici les lifetime Stats de : "+pseudoUSABLE+"\r\n"+"TOP1 : "+JSON.stringify(data.lifetimeStats[8].value)+"\r\n"+"Match played : "+JSON.stringify(data.lifetimeStats[7].value)+"\r\n"+"Pourcentage de win : "+JSON.stringify(data.lifetimeStats[9].value)+"\r\n"+"Kills : "+JSON.stringify(data.lifetimeStats[10].value)+"\r\n"+"KD ratio : "+JSON.stringify(data.lifetimeStats[11].value)+"\r\n"+"Time played : "+JSON.stringify(data.lifetimeStats[13].value)+"\r\n"+"```"));
+	
+	
+		//message.reply(JSON.stringify(data["lifetimeStats"])));
+	
+	}
+	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	
+	
 	 if (message.content.startsWith('??join') && message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960') { //message.author.id=='139039555180429312'| message.author.id=='241246422723330048' ) {
 		if (message.member.voiceChannel){
 		var musik = message.content;
@@ -82,7 +101,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 								 }
 								 
 	if(message.content.startsWith(prefix + "help")) { //liste des commandes
-		 message.channel.send("```List of commands : \n\n ??version  | Version 1.1.8  \n ??help | Toutes les commandes \n ??dog | partage une image d'un chien \n ??Avatar @Pseudo | Partage l'avatar d'un membre du Discord \n ??hug @Pseudo | Câlin à quelqu'un \n + a few hidden commands!  ```");	
+		 message.channel.send("```List of commands : \n\n ??version  | Version 1.1.8  \n ??help | Toutes les commandes \n ??dog | partage une image d'un chien \n ??Avatar @Pseudo | Partage l'avatar d'un membre du Discord \n ??hug @Pseudo | Câlin à quelqu'un \n ??fortnite <name> |lifetime stats of fortnite acc \n ??join <yt url> | stream song in author channel \n + a few hidden commands!   ```");	
 	                                                  }
 													  
 	if(message.content.startsWith('slt')){
@@ -121,7 +140,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	if(message.content.startsWith('pti con'+' <@399986788753735690>')){
 	var auteur=message.author.username;
 	var imageauteur=message.author.displayAvatarURL;
-	const embed = {
+	let embed = {
 		"title": "**GoodBoi wants to tell you something** :",
 		"url": "https://www.youtube.com/watch?v=o1NBB8EMduo",
 		"color": 5301186,
@@ -172,3 +191,4 @@ var imageurl = new Array('https://i.imgur.com/kVLWTgy.jpg','https://i.imgur.com/
 //<-------------------------------------  BANQUE D'IMAGE HUG --------------------------------------------------------------------------------------->
 var rn = numberimage=Math.floor(Math.random() * Math.floor(9));
 const hug = ["https://s-media-cache-ak0.pinimg.com/originals/49/a2/1e/49a21e182fcdfb3e96cc9d9421f8ee3f.gif", "https://s-media-cache-ak0.pinimg.com/originals/16/46/f7/1646f720af76ea58853ef231028bafb1.gif", "https://media.giphy.com/media/xJlOdEYy0r7ZS/giphy.gif", "http://i.imgur.com/2WywS3T.gif", "http://i.imgur.com/8ruodNJ.gif", "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1461071296-7451c05f5aae134e2cceb276b085a871.gif", "http://i0.kym-cdn.com/photos/images/original/000/931/030/394.gif", "https://media.tenor.co/images/1171c186f9130d1efa4a186ad4371e8c/tenor.gif", "http://cdn.smosh.com/sites/default/files/ftpuploads/bloguploads/0413/epic-hugs-friends-pikachu.gif"]
+
