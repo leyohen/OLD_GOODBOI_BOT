@@ -35,7 +35,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		var pseudoRAW = message.content;
 		var pseudoUSABLE = pseudoRAW.slice(11);
 		//console.log(pseudoUSABLE+"NAME");
-	client.getInfo(pseudoUSABLE, 'pc').then(data =>message.channel.send("```css"+"\r\n"+"Voici les lifetime Stats de : "+pseudoUSABLE+"\r\n"+"TOP1 : "+JSON.stringify(data.lifetimeStats[8].value)+"\r\n"+"Match played : "+JSON.stringify(data.lifetimeStats[7].value)+"\r\n"+"Pourcentage de win : "+JSON.stringify(data.lifetimeStats[9].value)+"\r\n"+"Kills : "+JSON.stringify(data.lifetimeStats[10].value)+"\r\n"+"KD ratio : "+JSON.stringify(data.lifetimeStats[11].value)+"\r\n"+"Time played : "+JSON.stringify(data.lifetimeStats[13].value)+"\r\n"+"```"));
+	client.getInfo(pseudoUSABLE, 'pc').then(data =>message.channel.send("```css"+"\r\n"+"Voici les lifetime Stats de : "+pseudoUSABLE+"\r\n"+"TOP1 : "+JSON.stringify(data.lifetimeStats[8].value)+"\r\n"+"Match played : "+JSON.stringify(data.lifetimeStats[7].value)+"\r\n"+"Pourcentage de win : "+JSON.stringify(data.lifetimeStats[9].value)+"\r\n"+"Kills : "+JSON.stringify(data.lifetimeStats[10].value)+"\r\n"+"KD ratio : "+JSON.stringify(data.lifetimeStats[11].value)+"\r\n"+"Time played : "+JSON.stringify(data.lifetimeStats[13])+"\r\n"+"```"));
 	
 	
 		//message.reply(JSON.stringify(data["lifetimeStats"])));
