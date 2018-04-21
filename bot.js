@@ -30,7 +30,19 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	if(message.author.id=='139039555180429312' && message.content=='??updateEND'){
 			bot.user.setGame('With dog toys');
 			bot.user.setStatus('online');}
+	
+	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		MESSAGE AS BOT
+			
+	if(message.author.id=='139039555180429312' && message.content.startsWith('?s')){
+	message.delete(1000);
+	var msgYOHEN = message.content;
+	var msgBOT = msgYOHEN.slice(3);
+	message.channel.send(msgBOT);
+		
+	}
 	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	
+	
 	if(message.content.startsWith('??fortnite') && message.author.id!=='399986788753735690' && message.author.id!=='405095442766888960'){
 		var pseudoRAW = message.content;
 		var pseudoUSABLE = pseudoRAW.slice(11);
