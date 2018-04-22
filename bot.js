@@ -8,6 +8,18 @@ var google = require('googleapis');
 const Fortnite = require('fortnite');
 const client = new Fortnite(process.env.FT_KEY);
 
+var http = require('http');
+//->>>>>>>>>>>>//->>>>>>>>>>>>
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(8080); //the server object listens on port 8080
+
+//->>>>>>>>>>>>//->>>>>>>>>>>>
+
+
+
 
 
 bot.on('ready',()=> {	
@@ -115,12 +127,44 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	if(message.content.startsWith(prefix + "help")) { //liste des commandes
 		 message.channel.send("```List of commands : \n\n ??version  | Version 1.1.8  \n ??help | Toutes les commandes \n ??dog | partage une image d'un chien \n ??Avatar @Pseudo | Partage l'avatar d'un membre du Discord \n ??hug @Pseudo | Câlin à quelqu'un \n ??fortnite <name> |lifetime stats of fortnite acc \n ??join <yt url> | stream song in author channel \n + a few hidden commands!   ```");	
 	                                                  }
-													  
+	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> REACTION												  
 	if(message.content.startsWith('slt')){
-		message.channel.send('salu')
-										 }
+		message.channel.send('salu');
+		message.react("👋");
+		message.react('404312550554206208');
+		message.channel.send('<:eeeh:404312550554206208> ');
+		
+										
+
+
+			//if (typeof obj.foo !== 'undefined') {
+				// your code here
+			//		}
+
+
+
+										}										
+										
+										
+										
+	if(message.content.startsWith('?testSWITCH')){
+	const embed = {
+  "description": "TURN on or off",
+  "color": 16777215,
+  "author": {
+    "name": "author name",
+    "url": "https://discordapp.com",
+    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+  }
+};
+	
+	message.channel.send({ embed }).then( message => {message.react(`437389357364674560`);message.react(`437389357876510730`);})
+	//msgSWITCH.awaitReactions
+	//message.channel.send('on');
+	
+	};
 										 
-										 
+//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> REACTION END										 
 	if(message.content.startsWith(prefix+"Avatar")){ //donne l'avatar de l'auteur
 		let TaggedUser = message.mentions.users.first() ? message.mentions.users.first() : message.author
 		let ava = TaggedUser.displayAvatarURL 
