@@ -34,7 +34,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>		MESSAGE AS BOT
 			
 	if(message.author.id=='139039555180429312' && message.content.startsWith('?s')){
-	message.delete(1000);
+	message.delete(1);
 	var msgYOHEN = message.content;
 	var msgBOT = msgYOHEN.slice(3);
 	message.channel.send(msgBOT);
