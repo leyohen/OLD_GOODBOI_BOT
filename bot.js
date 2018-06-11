@@ -222,7 +222,7 @@ bot.on('message',(message)=>	 { //->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<--------------------------------------------------- ANGERY DOG END ---------------------------------------------------------------->	
 	
 
-	if(message.content=="!archillect"){
+	if(message.content=="??archillect"){
 	var RNXD=Math.floor(Math.random() * Math.floor(177451));
 	message.channel.send("http://archillect.com/"+RNXD);
 	}
